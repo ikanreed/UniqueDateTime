@@ -4,8 +4,7 @@
 #include <stdio.h>
 
 
-//this should be in a mathish h file, but considering the scope the project the creep was just too much
-#define MIN(a,b) (((a)<(b))?(a):(b))
+
 
 int IsWhitespace(char c)
 {
@@ -26,13 +25,12 @@ int IsWhitespace(char c)
 /// </summary>
 /// <param name="trimmedString">the string to be trimmed</param>
 /// <param name="length">the buffer size of trimmedString</param>
-/// <param name="resultString">(out)pointer to newly allocated string</param>
-/// <param name="resultLength">(out)pointer to value to assign length</param>
-void trimstring(char* trimmedString, int length, char** resultString, int* resultLength)
+/// <param name="resultString">(out)buffer for new string, should be at least length in size</param>
+void trimstring(char* trimmedString, int length, char* resultBuffer)
 {
 	int start = 0;
 	//if our buffer is longer than the null terminated string, let's cut that off too
-	int end = MIN(strlen(trimmedString), length) - 1;
+	int end = (int)MIN(strlen(trimmedString), length) - 1;
 
 	while (start < length && IsWhitespace(trimmedString[start]))
 	{
@@ -43,16 +41,33 @@ void trimstring(char* trimmedString, int length, char** resultString, int* resul
 	{
 		end--;
 	}
-	*resultLength= end + 2-start;
-	//I know sizeof(char) is redundant, but we live in 2025, and UTF8-readiness is just sensible
+	int resultLength= end + 2-start;
 
-	char* result= (char *)malloc(sizeof(char) * (*resultLength));
-	result[*resultLength-1] = 0;//null terminate our new string
+	resultBuffer[resultLength-1] = 0;//null terminate our new string
 	for (int i = start; i <= end; i++)
 	{
-		result[i - start] = trimmedString[i];
+		resultBuffer[i - start] = trimmedString[i];
 	}
-	*resultString = result;
+}
+
+/// <summary>
+/// Gets a integer from a set number of digits
+/// </summary>
+/// <param name="string">A string to parse numbers from</param>
+/// <param name="start">The index of the first number</param>
+/// <param name="numdigits">the number of digits to parse</param>
+/// <returns>The value</returns>
+int parseint(char* string, int start, int numdigits)
+{
+	//in a world where the string isn't prevalidated, I'd want this to have a better signature that allows for parsing failure
+	int curValue = 0;
+	for (int i = 0; i < numdigits; i++)
+	{
+		curValue *= 10;
+		int curDigit = string[start + i] - '0';
+		curValue += curDigit;
+	}
+	return curValue;
 }
 
 

@@ -17,6 +17,15 @@ struct DateTime
 	char tz_minutes;
 };
 
+#define DT_VALID 0
+#define DT_INVALID_STRING_FORMAT 1
+#define DT_INVALID_MONTH 2
+#define DT_INVALID_DAY 3
+#define DT_INVALID_HOUR 4
+#define DT_INVALID_MINUTE 5
+#define DT_INVALID_SECONDS 6
+#define DT_INVALID_TZ 7
+
 int validate_datetime_string_format(char* datestring, int str_length);
 
 int parse_datetime(char* datestring, int str_length, struct DateTime* result);

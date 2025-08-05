@@ -15,40 +15,34 @@ namespace TestBreakTime
 
 		TEST_METHOD(TestTrim)
 		{
-			char* resultString;
+			//none of our test cases are longer than that
+			char resultString[100];
 			int resultLength;
-			trimstring("     ", 5, &resultString, &resultLength);
+			trimstring("     ", 5, resultString);
 			Assert::AreEqual("", resultString);
-			free(resultString);
 
-			trimstring(" asdf    ", 9, &resultString, &resultLength);
+			trimstring(" asdf    ", 9, resultString);
 			Assert::AreEqual("asdf", resultString);
-			free(resultString);
 
 
-			trimstring("sdf    ", 7, &resultString, &resultLength);
+			trimstring("sdf    ", 7, resultString);
 			Assert::AreEqual("sdf", resultString);
-			free(resultString);
 
 
-			trimstring("\r\n\tf", 4, &resultString, &resultLength);
+			trimstring("\r\n\tf", 4, resultString);
 			Assert::AreEqual("f", resultString);
-			free(resultString);
 
 
-			trimstring("", 0, &resultString, &resultLength);
+			trimstring("", 0, resultString);
 			Assert::AreEqual("", resultString);
-			free(resultString);
 
 			//buffer underflow should be fine
-			trimstring("lots of text", 0, &resultString, &resultLength);
+			trimstring("lots of text", 0, resultString);
 			Assert::AreEqual("", resultString);
-			free(resultString);
 
 			//buffer overflow should be fine
-			trimstring("", 20, &resultString, &resultLength);
+			trimstring("", 20, resultString);
 			Assert::AreEqual("", resultString);
-			free(resultString);
 
 		}
 	};
