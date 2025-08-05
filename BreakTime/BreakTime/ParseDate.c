@@ -90,6 +90,13 @@ int validate_datetime_string_format(char* datestring, int str_length)
 	return invalid;
 }
 
+/// <summary>
+/// Parses a datetime and writes the result to a passed argument
+/// </summary>
+/// <param name="datestring">a string containing the date</param>
+/// <param name="str_length">the length of datestring in bytes</param>
+/// <param name="result">(out) the structure to fill</param>
+/// <returns>0 if succesful, non-zero if unsuccesful</returns>
 int parse_datetime(char* datestring, int str_length, struct DateTime* result)
 {
 	return 1;

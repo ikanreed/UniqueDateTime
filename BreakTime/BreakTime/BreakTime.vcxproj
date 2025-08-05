@@ -126,6 +126,7 @@
   <ItemGroup>
     <ClCompile Include="main.c" />
     <ClCompile Include="ParseDate.c" />
+    <ClCompile Include="StringHelper.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DateTimeStruct.h" />
