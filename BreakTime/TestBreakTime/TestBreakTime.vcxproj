@@ -100,7 +100,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;$(ProjectDir)\..\..\BreakTime\BreakTime\x64\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>ParseDate.obj;StringHelper.obj;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ParseDate.obj;StringHelper.obj;BinaryTree.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -165,6 +165,7 @@
     </ClCompile>
     <ClCompile Include="TestBreakTime.cpp" />
     <ClCompile Include="TestStringCode.cpp" />
+    <ClCompile Include="TestTree.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

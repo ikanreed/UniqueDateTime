@@ -22,6 +22,10 @@ namespace TestBreakTime
 			int UTCresult = validate_datetime_string_format(UTCTz, strlen(UTCTz));
 			Assert::AreEqual(DT_VALID, UTCresult);
 
+			char* positiveTimeZone = "2012-07-12T12:21:13+06:00";
+			int positiveResult = validate_datetime_string_format(positiveTimeZone, strlen(positiveTimeZone));
+			Assert::AreEqual(DT_VALID, positiveResult);
+
 
 			char* yearNotNumeric = "20A5-08-04T10:52:00-05:00";
 			int yearNotNumericResult = validate_datetime_string_format(yearNotNumeric, strlen(yearNotNumeric));

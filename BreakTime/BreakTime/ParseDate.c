@@ -77,7 +77,7 @@ int validate_datetime_string_format(char* datestring, int buffer_size)
 	if (str_length == 25)
 	{
 		char plusMinus = datestring[19];
-		if (plusMinus != '-' && plusMinus != "+")
+		if (plusMinus != '-' && plusMinus != '+')
 		{
 			invalid |= DT_INVALID_STRING_FORMAT;
 		}

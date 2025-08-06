@@ -124,13 +124,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BinaryTree.c" />
+    <ClCompile Include="DateCompare.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="ParseDate.c" />
     <ClCompile Include="StringHelper.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="DateTimeStruct.h" />
+    <ClInclude Include="main.h" />
     <ClInclude Include="StringHelper.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="DateOutput.txt" />
+    <Text Include="SomeDates.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

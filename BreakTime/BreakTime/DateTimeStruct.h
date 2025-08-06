@@ -30,6 +30,8 @@ int validate_datetime_string_format(char* datestring, int str_length);
 
 int parse_datetime(char* datestring, int str_length, struct DateTime* result);
 
+int compare_raw_values(void* leftDT, void* rightDT);
+
 #ifdef __cplusplus
 }
 #endif
