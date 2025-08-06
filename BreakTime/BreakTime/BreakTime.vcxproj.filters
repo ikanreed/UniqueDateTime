@@ -21,6 +21,15 @@
     <ClCompile Include="ParseDate.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="StringHelper.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryTree.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DateCompare.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DateTimeStruct.h">
@@ -29,5 +38,22 @@
     <ClInclude Include="StringHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BinaryTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="SomeDates.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="DateOutput.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="largetest.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
