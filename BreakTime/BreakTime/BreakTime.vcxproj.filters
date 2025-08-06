@@ -52,5 +52,8 @@
     <Text Include="DateOutput.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="largetest.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

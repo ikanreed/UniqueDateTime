@@ -138,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="DateOutput.txt" />
+    <Text Include="largetest.txt" />
     <Text Include="SomeDates.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
