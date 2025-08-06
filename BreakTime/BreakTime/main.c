@@ -21,6 +21,7 @@ void RunMainLoop(FILE* infile, FILE* outfile)
 	char cleaned_buffer[MAX_LINE_LENGTH];
 	char lineBuffer[MAX_LINE_LENGTH];
 	BinaryTree* alreadyFound = 0;
+	int numberOfDates = 0;
 	int scanfresult;
 	while (scanfresult=fscanf_s(infile, "%[^\n]", lineBuffer, MAX_LINE_LENGTH) != EOF)
 	{
@@ -39,9 +40,11 @@ void RunMainLoop(FILE* infile, FILE* outfile)
 		//good dates get checked into the btree
 		else
 		{
+			numberOfDates++;
 			WriteIfUnique(&alreadyFound, &parsed, cleaned_buffer, outfile);
+			//TODO: periodically balance the tree for very large datasets that are already ordered.  If we wanted O(N) insertion, we'd use an array set.
 		}
-		//TODO: periodically balance the tree for very large datasets that are already ordered.  If we wanted O(N) insertion, we'd use an array set.
+		
 	}
 }
 
@@ -62,6 +65,7 @@ void WriteIfUnique(BinaryTree** tree, struct DateTime* parsedRef, char* date_tex
 	{
 		//for now we'll write it as we recieved it, except with whitespace removed.
 		//there's other cases to consider: e.g. do we want to normalize UTC to Z or +00:00?
+		//TODO: skip this if we're printing sorted output, rather than prioritizing "feeding" downpipe program
 		fprintf(outfile, "%s\n", date_text);
 	}
 }
