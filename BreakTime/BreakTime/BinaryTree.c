@@ -77,6 +77,8 @@ int tree_insert(BinaryTree* tree, void* payload, size_t payload_size, int (*cmpP
 /// <param name="tree"></param>
 void free_tree(BinaryTree* tree)
 {
+	if (tree == 0)
+		return;
 	if (tree->left != 0)
 	{
 		free_tree(tree->left);

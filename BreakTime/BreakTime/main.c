@@ -13,15 +13,16 @@ int main(int args, char** argv)
 {
 	//TODO: parse args for alternative inputs and outputs, we're doing this POSIX style 
 	//TODO: allow args for alternative comparison methods(unique dates, unique times, force all dates to UTC, etc)
-	RunMainLoop(stdin, stdout);
+	return RunMainLoop(stdin, stdout);
 }
 
-void RunMainLoop(FILE* infile, FILE* outfile)
+int RunMainLoop(FILE* infile, FILE* outfile)
 {
 	char cleaned_buffer[MAX_LINE_LENGTH];
 	char lineBuffer[MAX_LINE_LENGTH];
 	BinaryTree* alreadyFound = 0;
 	int numberOfDates = 0;
+	int returnCode = 0;
 	int scanfresult;
 	while (scanfresult=fscanf_s(infile, "%[^\n]", lineBuffer, MAX_LINE_LENGTH) != EOF)
 	{
@@ -35,6 +36,7 @@ void RunMainLoop(FILE* infile, FILE* outfile)
 
 		if (validationResult != DT_VALID)
 		{
+			returnCode = 1;
 			ReportBadDate(cleaned_buffer, validationResult);
 		}
 		//good dates get checked into the btree
@@ -46,6 +48,11 @@ void RunMainLoop(FILE* infile, FILE* outfile)
 		}
 		
 	}
+	//let's allow this to be not the main of every program that uses it, and free our malloc'd memory
+	free_tree(alreadyFound);
+	//if we're going for a posix-style app, we should exit with non-zero if anything went wrong.
+	//don't break shell scripting assumptions
+	return returnCode;
 }
 
 void WriteIfUnique(BinaryTree** tree, struct DateTime* parsedRef, char* date_text, FILE* outfile)
