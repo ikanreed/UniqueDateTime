@@ -1,6 +1,6 @@
 #pragma once
 
-void RunMainLoop(FILE* infile, FILE* outfile);
+int RunMainLoop(FILE* infile, FILE* outfile);
 
 void ReportBadDate(char*  cleaned_buffer, int validationResult);
 
